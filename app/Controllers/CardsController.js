@@ -1,37 +1,36 @@
 import { ProxyState } from "../AppState.js";
+import { Task } from "../Models/Task.js";
+import {Card} from "../Models/Card.js"
 import { cardsService } from "../Services/CardsService.js";
+
+function drawCards(){
+  let template = ''
+  ProxyState.Cards.forEach(Card => template += Card.Template)
+  document.getElementById('tasks').innerHTML = template
+}
 
 export class CardsController {
   constructor() {
-    ProxyState.on('Cards', this.drawCards)
-    this.drawCards()
+    ProxyState.on('Cards', drawCards)
+    drawCards()
   }
-  drawCards() {
-    console.log('draw cards')
-    let template = ''
-    ProxyState.Cards.forEach(card => {
-      template += /*html*/`
-    <div class="card-header text-center" id="card-header">
-      <h3>${card.title}
-        <button class="btn btn-info">
-          <i class="mdi mdi-pencil-outline "></i>
-        </button>
-      </h3>
-    </div>`
-    })
-    document.getElementById('card-title').innerHTML = template
-  }
+  // drawCards() {
+  //   console.log('draw cards')
+  //   let template = ''
+  //   ProxyState.Cards.forEach(Card => )
+  //   document.getElementById('tasks').innerHTML = template
+  // }
 
   addCard(event) {
     event.preventDefault();
     let form = event.target
     let formData = {
       title: form.title.value,
-      // color: form.color.value,
     }
     console.log(formData)
     cardsService.addCard(formData)
-    form.reset()
+    drawCards()
+    // form.reset()
   }
 
 }

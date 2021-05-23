@@ -25,24 +25,27 @@
         <div class="container-fluid">
             <div class="row create">
                 <div class="col-10 m-auto">
-                    <form class="create" id="create-card" onsubmit="app.cardsController.addCard(event)">
+                    <form class="create" id="create" onsubmit="app.cardsController.addCard(event)">
                         <div class="form-group">
-                            <label for="Title" class="sr-only">Title:</label>
+                            <label for="listTitle" class="sr-only" id="title" >Title:</label>
                             <input type="text" placeholder="List Title" id="title" required minlength="3" maxlength="25"
                                 class="form-control w-50
 ">
                         </div>
-                        <!-- <div class="form-group w-50">
-                            <label for="Color" class="sr-only">Color:</label>
+                        <div class="form-group w-50">
+                            <label for="color" class="sr-only">Color:</label>
                             <select class="custom-select" id="color" required>
                                 <option value=""> Select a Color</option>
-                                <option value="#0058ff">Blue</option>
-                                <option value="326272a">Black</option>
-                                <option>Gray</option>
-                                <option>Pink</option>
-                                <option>Green</option>
+                                <option value="Blue" >Blue</option>
+                                <option value="Black" >Black</option>
+                                <option value="Gray" >Gray</option>
+                                <option value="Red" >Red</option>
+                                <option value="Green" >Green</option>
+                                <option value="Yellow" >Yellow</option>
+                                <option value="Teal" >Teal</option>
+                                <option value="None" >None</option>
                               </select>
-                        </div> -->
+                        </div>
                     </form>
                 </div>
                 <div class="col-2">
@@ -51,33 +54,36 @@
                     </button>
                 </div>
             </div>
-            <div class="row cards">
-                <div class="col-4">
-                    <div class="card" id="card">
-                        <div id="card-title"></div>
+            <div class="row cards" id="tasks"></div>
+                <!-- <div class="col-4"> -->
+                    <!-- <div class="card" id="card">
+                        <div id="card-title"></div> -->
                         <!-- //NOTE - make this a card list from booty// -->
-                        <div class="card-body text-center">
+                        <!-- <div class="card-body text-center" id="list-tasks">
                             <p>
                                 <input type="checkbox" name="completed" id="completed" onsubmit="taskComplete()" />
                                 card list here
                                 <button class="btn-danger shadow">
-                                    <i class="mdi mdi-trash-can" onclick="deleteTask()"></i>
+                                    <i class="mdi mdi-trash-can" onclick="app.tasksController.deleteTask()"></i>
                                 </button>
                             </p>
                         </div>
                         <div class="card add-task">
                             <div>
-                                <div class="card d-none">
+                                <div class="card d-none" id="task-form" onsubmit="app.tasksController.addTask(event)" >
                                     <form id="task-form">
                                         <div class="form-group">
                                             <label for="task-title" class="sr-only">Title:</label>
-                                            <input type="text" id="task-title" minlength="3" maxlength="25"
+                                            <input type="text" id="taskTitle" minlength="3" maxlength="25"
                                                 class="form-control" placeholder="Task Title" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="description" class="sr-only">Description:</label>
-                                            <input type="text" id="description" minlength="3" maxlength="50"
+                                            <input type="text" minlength="3" maxlength="50"
                                                 class="form-control" placeholder="Task Description">
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-success">create</button>
                                         </div>
                                     </form>
                                 </div>
@@ -92,9 +98,9 @@
                                 <i class="mdi mdi-trash-can"></i>
                             </button>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </div> -->
+                <!-- </div>
+            </div> --> 
         </div>
     </main>
     <footer class="container-fluid bg-dark text-light">

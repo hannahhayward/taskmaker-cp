@@ -1,16 +1,17 @@
 import { Card } from "./Models/Card.js"
 import { Task } from "./Models/Task.js"
 import { EventEmitter } from "./Utils/EventEmitter.js"
+import { generateId } from "./Utils/IdGenerator.js"
 import { isValidProp } from "./Utils/isValidProp.js"
 
 class AppState extends EventEmitter {
   /** @type {Card[]} */
   /**@type {Task[]} */
   Cards = [
-    new Card('testing')
+    new Card('testing','Green')
   ]
 Tasks = [
-  new Task('test', 'i am testing this function')
+  new Task('test', 'i am testing this function',generateId())
 ]
 
 }
